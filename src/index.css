@@ -1,11 +1,11 @@
 @font-face {
   font-family: "Sejong Bold";
-  src: url("./fonts/sejong_ttf/Sejong\ hospital\ Bold.ttf");
+  src: url("../public/fonts/sejong_ttf/Sejong\ hospital\ Bold.ttf");
 }
 
 @font-face {
   font-family: "Sejong Light";
-  src: url("./fonts/sejong_ttf/Sejong\ hospital\ Light.ttf");
+  src: url("../public/fonts/sejong_ttf/Sejong\ hospital\ Light.ttf");
 }
 
 * {
