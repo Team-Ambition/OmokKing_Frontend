@@ -1,5 +1,5 @@
 import React from "react";
-import "./RoomList";
+import "./style";
 
 const RoomList = () => {
   return <div></div>;

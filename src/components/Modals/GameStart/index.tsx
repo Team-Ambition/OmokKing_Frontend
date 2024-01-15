@@ -1,5 +1,5 @@
 import React from "react";
-import "./GameStart";
+import "./style";
 
 const GameStart = () => {
   return <div></div>;

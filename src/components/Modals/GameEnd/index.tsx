@@ -1,5 +1,5 @@
 import React from "react";
-import "./GameEnd";
+import "./style";
 
 const GameEnd = () => {
   return <div></div>;

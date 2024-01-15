@@ -1,5 +1,5 @@
 import React from "react";
-import "./RoomCreate";
+import "./style";
 
 const RoomCreate = () => {
   return <div></div>;
