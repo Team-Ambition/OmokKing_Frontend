@@ -1,8 +1,17 @@
 import React from "react";
-import "./style";
+import * as S from "./style";
 
-const Button = () => {
-  return <div></div>;
+type OwnProps = {
+  title: string;
+  onClickMethod: () => void;
+};
+
+const Button = ({ title, onClickMethod }: OwnProps) => {
+  return (
+    <S.Layout onClick={onClickMethod}>
+      <S.Title>{title}</S.Title>
+    </S.Layout>
+  );
 };
 
 export default Button;
