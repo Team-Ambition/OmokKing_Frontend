@@ -3,11 +3,12 @@ import * as S from "./style";
 
 type OwnProps = {
   title: string;
+  onClickMethod: () => void;
 };
 
-const Button = ({ title }: OwnProps) => {
+const Button = ({ title, onClickMethod }: OwnProps) => {
   return (
-    <S.Layout>
+    <S.Layout onClick={onClickMethod}>
       <S.Title>{title}</S.Title>
     </S.Layout>
   );

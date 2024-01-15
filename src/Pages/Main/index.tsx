@@ -1,13 +1,18 @@
 import React from "react";
-import "./style";
+import * as S from "./style";
 
 import Button from "../../components/Button";
 
 const Main = () => {
   return (
-    <div>
-      <Button title="로그인" />
-    </div>
+    <S.Layout>
+      <Button
+        title="로그인"
+        onClickMethod={() => {
+          console.log(1);
+        }}
+      />
+    </S.Layout>
   );
 };
 
