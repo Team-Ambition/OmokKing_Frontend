@@ -1,8 +1,6 @@
 import React from "react";
-import "./style";
+import * as S from "./style";
 
-const RoomCreate = () => {
-  return <div></div>;
-};
+const RoomCreate = () => {};
 
 export default RoomCreate;
