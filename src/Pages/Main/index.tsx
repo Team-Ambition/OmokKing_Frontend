@@ -3,9 +3,11 @@ import * as S from "./style";
 
 import Button from "../../components/Button";
 import MyPage from "../../components/Modals/MyPage";
+import RoomCreate from "../../components/Modals/RoomCreate";
 
 const Main = () => {
   const [isMyPageModal, setIsMyPageModal] = useState<boolean>(false);
+  const [isRoomCreateModal, setIsRoomCreateModal] = useState<boolean>(false);
 
   const multipleButtons = true;
   return (
@@ -19,13 +21,16 @@ const Main = () => {
           {multipleButtons ? (
             <>
               <Button title="게임참가" onClickMethod={() => {}} />
-              <Button title="게임생성" onClickMethod={() => {}} />
+              <Button
+                title="게임생성"
+                onClickMethod={() => {
+                  setIsRoomCreateModal(true);
+                }}
+              />
               <Button
                 title="마이페이지"
                 onClickMethod={() => {
-                  console.log(isMyPageModal);
                   setIsMyPageModal(true);
-                  console.log(isMyPageModal);
                 }}
               />
               <Button title="로그아웃" onClickMethod={() => {}} />
@@ -36,6 +41,9 @@ const Main = () => {
         </S.Buttons>
       </S.Items>
       {isMyPageModal && <MyPage setIsMyPageModal={setIsMyPageModal} />}
+      {isRoomCreateModal && (
+        <RoomCreate setIsRoomCreateModal={setIsRoomCreateModal} />
+      )}
     </S.Layout>
   );
 };
