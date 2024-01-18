@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Main from "./Pages/Main";
 import Ingame from "./Pages/Ingame";
+import GameEnd from "./components/Modals/GameEnd";
 
 function App() {
   return (
