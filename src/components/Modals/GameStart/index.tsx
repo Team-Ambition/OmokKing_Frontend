@@ -1,5 +1,6 @@
 import React from "react";
 import * as S from "./style";
+import Loading from "../../Loading";
 
 const GameStart = () => {
   return (
@@ -11,10 +12,14 @@ const GameStart = () => {
             <S.Img src="../../../../img/Profile.png" alt="내 프로필" />
           </S.Profile>
           <S.VS>VS</S.VS>
-          <S.Profile>
-            <S.Img src="../../../../img/Profile.png" alt="상대 프로필" />
-            <S.Name>이승현</S.Name>
-          </S.Profile>
+          {1 ? (
+            <S.Profile>
+              <S.Img src="../../../../img/Profile.png" alt="상대 프로필" />
+              <S.Name>이승현</S.Name>
+            </S.Profile>
+          ) : (
+            <Loading />
+          )}
         </S.Main>
       </S.Layout>
     </S.ModalOverlay>
