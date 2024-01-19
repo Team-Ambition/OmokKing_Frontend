@@ -4,6 +4,7 @@ import Main from "./Pages/Main";
 import Ingame from "./Pages/Ingame";
 import Page404 from "./Pages/Page404";
 import GameStart from "./components/Modals/GameStart";
+import Loading from "./components/Loading";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route path="/" element={<Main />} />
       <Route path="/InGame/:id" element={<Ingame />} />
       <Route path="/start" element={<GameStart />} />
+      <Route path="/loading" element={<Loading />} />
       <Route path="*" element={<Page404 />} />
     </Routes>
   );

@@ -42,7 +42,7 @@ export const Name = styled.p`
 `;
 
 export const Img = styled.img`
-    width: 120px;
+  width: 120px;
 `;
 
 export const VS = styled.p`
@@ -50,3 +50,5 @@ export const VS = styled.p`
   font-family: "Sejong Bold";
   color: white;
 `;
+
+export const Loading = styled.img``;
