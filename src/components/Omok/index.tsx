@@ -24,7 +24,9 @@ const Omok = () => {
           </React.Fragment>
         ))}
       </S.BoardContainer>
-      <Dot />
+      <S.Dots>
+        <Dot />
+      </S.Dots>
     </S.Layout>
   );
 };

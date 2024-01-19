@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Layout = styled.div`
-  width: 680px;
-  height: 680px;
+  max-width: max-content;
+  max-height: max-content;
   background-color: #dbb578;
   display: flex;
   justify-content: center;
@@ -20,4 +20,14 @@ export const Cell = styled.div`
   height: 100%;
   box-sizing: border-box;
   border: 1px solid #000;
+`;
+
+export const Dots = styled.div`
+  width: 30vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  gap: 10vw;
 `;
