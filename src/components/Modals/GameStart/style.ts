@@ -50,5 +50,3 @@ export const VS = styled.p`
   font-family: "Sejong Bold";
   color: white;
 `;
-
-export const Loading = styled.img``;
