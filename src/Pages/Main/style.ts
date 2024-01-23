@@ -22,14 +22,14 @@ export const Layout2 = styled.div`
   background-color: rgba(217, 217, 217, 0.5);
 `;
 
-export const Items = styled.div<{ multipleButtons: boolean }>`
+export const Items = styled.div<{ isLoggined: boolean }>`
   z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: ${(props) => (props.multipleButtons ? "55vh" : "30vh")};
+  height: ${(props) => (props.isLoggined ? "55vh" : "30vh")};
   justify-content: space-between;
-  margin-bottom: ${(props) => (props.multipleButtons ? "" : "10%")};
+  margin-bottom: ${(props) => (props.isLoggined ? "" : "10%")};
 `;
 
 export const Icon = styled.img`
