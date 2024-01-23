@@ -3,29 +3,31 @@ import customAxios from "../lib/customAxios";
 
 const useUser = () => {
   const [isLoggined, setIsLoggined] = useState<boolean>(false);
+  const [data, setData] = useState({ name: "", profileImg: "" });
   const accessToken = localStorage.getItem("accessToken");
-  const data = { name: "", profileImg: "" };
 
   useEffect(() => {
-    console.log(data);
     const fetchData = async () => {
       try {
-        await customAxios.get("/auth/userInfo").then((res) => {
-          data.name = res.data.name;
-          data.profileImg = res.data.profileImg;
-        });
-        if (data.name && data.profileImg) {
+        const response = await customAxios.get("/auth/userInfo");
+        const userData = {
+          name: response.data.name,
+          profileImg: response.data.profileImg,
+        };
+        setData(userData);
+        if (userData.name && userData.profileImg) {
           setIsLoggined(!!accessToken);
         } else {
           localStorage.removeItem("accessToken");
         }
-        console.log(data);
       } catch (err) {
         console.log(err);
       }
     };
+
     fetchData();
-  }, []);
+  }, [accessToken]);
+
   return {
     isLoggined,
     data,
