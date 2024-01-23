@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import * as S from "./style";
 import useModal from "../../../hooks/useModal";
+import useUser from "../../../hooks/useUser";
 
 type OwnProps = {
   setIsMyPageModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -8,6 +9,7 @@ type OwnProps = {
 
 const MyPage = ({ setIsMyPageModal }: OwnProps) => {
   const { handleOutsideClick } = useModal(setIsMyPageModal);
+  const { data } = useUser();
 
   return (
     <S.ModalOverlay onClick={handleOutsideClick}>
@@ -20,8 +22,8 @@ const MyPage = ({ setIsMyPageModal }: OwnProps) => {
           }}
         />
         <S.Title>마이페이지</S.Title>
-        <S.Profile src="../../../../img/Profile.png" alt="프로필사진" />
-        <S.Name>추성우</S.Name>
+        <S.Profile src={data.profileImg} alt="프로필사진" />
+        <S.Name>{data.name}</S.Name>
       </S.Layout>
     </S.ModalOverlay>
   );
