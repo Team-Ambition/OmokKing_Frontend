@@ -6,31 +6,13 @@ import MyPage from "../../components/Modals/MyPage";
 import RoomCreate from "../../components/Modals/RoomCreate";
 import RoomList from "../../components/Modals/RoomList";
 import customAxios from "../../lib/customAxios";
-import axios from "axios";
+import useUser from "../../hooks/useUser";
 
 const Main = () => {
   const [isMyPageModal, setIsMyPageModal] = useState<boolean>(false);
   const [isRoomCreateModal, setIsRoomCreateModal] = useState<boolean>(false);
   const [isRoomListModal, setIsRoomListModal] = useState<boolean>(false);
-  const [isLoggined, setIsLoggined] = useState<boolean>(false);
-  const accessToken = localStorage.getItem("accessToken");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data } = await customAxios.get("/auth/userInfo");
-        console.log(data);
-        if (data.name && data.profileImg) {
-          setIsLoggined(!!accessToken);
-        } else {
-          localStorage.removeItem("accessToken");
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchData();
-  }, []);
+  const { isLoggined } = useUser();
 
   return (
     <S.Layout>
@@ -63,8 +45,9 @@ const Main = () => {
               <Button
                 title="로그아웃"
                 onClickMethod={() => {
+                  window.location.href =
+                    "https://omoking.jamkris.kro.kr/auth/google/logout";
                   localStorage.removeItem("accessToken");
-                  window.location.reload();
                 }}
               />
             </>
