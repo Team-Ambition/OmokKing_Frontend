@@ -1,26 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./style";
 
 import Button from "../../components/Button";
 import MyPage from "../../components/Modals/MyPage";
 import RoomCreate from "../../components/Modals/RoomCreate";
 import RoomList from "../../components/Modals/RoomList";
+import customAxios from "../../lib/customAxios";
+import useUser from "../../hooks/useUser";
 
 const Main = () => {
   const [isMyPageModal, setIsMyPageModal] = useState<boolean>(false);
   const [isRoomCreateModal, setIsRoomCreateModal] = useState<boolean>(false);
   const [isRoomListModal, setIsRoomListModal] = useState<boolean>(false);
+  const { isLoggined } = useUser();
 
-  const multipleButtons = true;
   return (
     <S.Layout>
       <S.Omok src="../../../img/MainBackground.svg" alt="바둑판" />
       <S.Layout2 />
-      <S.Items multipleButtons={multipleButtons}>
+      <S.Items isLoggined={isLoggined}>
         <S.Icon src="../../../img/Icon.svg" alt="" />
         <S.Title>오목킹</S.Title>
         <S.Buttons>
-          {multipleButtons ? (
+          {isLoggined ? (
             <>
               <Button
                 title="게임참가"
@@ -40,10 +42,23 @@ const Main = () => {
                   setIsMyPageModal(true);
                 }}
               />
-              <Button title="로그아웃" onClickMethod={() => {}} />
+              <Button
+                title="로그아웃"
+                onClickMethod={() => {
+                  window.location.href =
+                    "https://omoking.jamkris.kro.kr/auth/google/logout";
+                  localStorage.removeItem("accessToken");
+                }}
+              />
             </>
           ) : (
-            <Button title="로그인" onClickMethod={() => {}} />
+            <Button
+              title="로그인"
+              onClickMethod={() => {
+                window.location.href =
+                  "https://omoking.jamkris.kro.kr/auth/google";
+              }}
+            />
           )}
         </S.Buttons>
       </S.Items>
