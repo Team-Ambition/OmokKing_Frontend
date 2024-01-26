@@ -5,14 +5,13 @@ import Button from "../../components/Button";
 import MyPage from "../../components/Modals/MyPage";
 import RoomCreate from "../../components/Modals/RoomCreate";
 import RoomList from "../../components/Modals/RoomList";
-import customAxios from "../../lib/customAxios";
 import useUser from "../../hooks/useUser";
 
 const Main = () => {
+  const { isLoggined } = useUser();
   const [isMyPageModal, setIsMyPageModal] = useState<boolean>(false);
   const [isRoomCreateModal, setIsRoomCreateModal] = useState<boolean>(false);
   const [isRoomListModal, setIsRoomListModal] = useState<boolean>(false);
-  const { isLoggined } = useUser();
 
   return (
     <S.Layout>
@@ -46,7 +45,7 @@ const Main = () => {
                 title="로그아웃"
                 onClickMethod={() => {
                   window.location.href =
-                    "https://omoking.jamkris.kro.kr/auth/google/logout";
+                    "http://localhost:3000/auth/google/logout";
                   localStorage.removeItem("accessToken");
                 }}
               />
@@ -55,8 +54,7 @@ const Main = () => {
             <Button
               title="로그인"
               onClickMethod={() => {
-                window.location.href =
-                  "https://omoking.jamkris.kro.kr/auth/google";
+                window.location.href = "http://localhost:3000/auth/google";
               }}
             />
           )}
@@ -64,7 +62,10 @@ const Main = () => {
       </S.Items>
       {isRoomListModal && <RoomList setIsRoomListModal={setIsRoomListModal} />}
       {isRoomCreateModal && (
-        <RoomCreate setIsRoomCreateModal={setIsRoomCreateModal} />
+        <RoomCreate
+          setIsRoomCreateModal={setIsRoomCreateModal}
+          isRoomCreateModal={isRoomCreateModal}
+        />
       )}
       {isMyPageModal && <MyPage setIsMyPageModal={setIsMyPageModal} />}
     </S.Layout>

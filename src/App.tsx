@@ -3,17 +3,19 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Main from "./Pages/Main";
 import Ingame from "./Pages/Ingame";
 import Page404 from "./Pages/Page404";
-import GameStart from "./components/Modals/GameStart";
-import Loading from "./components/Loading";
 import Omok from "./components/Omok";
+import socket from "./lib/socketInstace";
+import useUser from "./hooks/useUser";
 
 function App() {
+  const { isLoggined } = useUser();
+  console.log(isLoggined);
+
   const history = useNavigate();
   useEffect(() => {
     const urlParams = new URL(window.location.href).searchParams.get(
       "accessToken"
     );
-    console.log(urlParams);
     if (urlParams) {
       localStorage.setItem("accessToken", urlParams);
       history("/");

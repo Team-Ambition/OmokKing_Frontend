@@ -47,7 +47,7 @@ export const RoomInput = styled.input`
   padding-left: 2%;
   padding-right: 2%;
   font-family: "Sejong Bold";
-  font-size: 20px;
+  font-size: 18px;
   &:focus {
     outline: none;
   }
