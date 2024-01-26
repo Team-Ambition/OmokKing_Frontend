@@ -4,12 +4,17 @@ import Main from "./Pages/Main";
 import Ingame from "./Pages/Ingame";
 import Page404 from "./Pages/Page404";
 import Omok from "./components/Omok";
-import socket from "./lib/socketInstace";
 import useUser from "./hooks/useUser";
+import { io } from "socket.io-client";
 
 function App() {
   const { isLoggined } = useUser();
-  console.log(isLoggined);
+  useEffect(() => {
+    if (isLoggined) {
+      console.log(isLoggined);
+      const socket = io("http://localhost:3000");
+    }
+  }, [isLoggined]);
 
   const history = useNavigate();
   useEffect(() => {
