@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import * as S from "./style";
 import useModal from "../../../hooks/useModal";
 import Button from "../../Button";
+import { roomNew, error, socket } from "../../../socket/socketio";
+import useUser from "../../../hooks/useUser";
 
 type OwnProps = {
   setIsRoomCreateModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -11,9 +13,18 @@ type OwnProps = {
 const RoomCreate = ({ setIsRoomCreateModal, isRoomCreateModal }: OwnProps) => {
   const [isInput, setIsInput] = useState("");
   const { handleOutsideClick } = useModal(setIsRoomCreateModal);
+  const { data } = useUser();
 
-  const handleCreate = () => {
-    
+  const handleCreateRoom = () => {
+    if (isInput.length == 0 || isInput.length > 12) {
+      alert("방 제목의 길이는 1~")
+      return;
+    }
+    roomNew(isInput, data.name, data.profileImg);
+    error();
+    socket.on("join", (message) => {
+      console.log(message);
+    });
   };
 
   return (
@@ -33,11 +44,12 @@ const RoomCreate = ({ setIsRoomCreateModal, isRoomCreateModal }: OwnProps) => {
           onChange={(e) => {
             setIsInput(e.target.value);
           }}
+          autoFocus
         />
         <Button
           title="생성하기"
           onClickMethod={() => {
-            handleCreate();
+            handleCreateRoom();
           }}
         />
       </S.Layout>

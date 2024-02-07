@@ -45,7 +45,7 @@ const Main = () => {
                 title="로그아웃"
                 onClickMethod={() => {
                   window.location.href =
-                    "http://localhost:3000/auth/google/logout";
+                    "http://localhost:3000";
                   localStorage.removeItem("accessToken");
                 }}
               />
@@ -54,7 +54,8 @@ const Main = () => {
             <Button
               title="로그인"
               onClickMethod={() => {
-                window.location.href = "http://localhost:3000/auth/google";
+                window.location.href =
+                  "http://localhost:3000";
               }}
             />
           )}
